@@ -92,11 +92,12 @@ npm run dev  # Runs on http://localhost:3000
 ### Mobile View
 
 #### Dashboard Mobile
-![Dashboard Mobile](/assets/dashboard-mobile.png)
+<img src="/assets/dashboard-mobile.png" alt="Dashboard Mobile" height="400" />
+
 *Fully responsive dashboard with mobile navigation*
 
 #### Tasks Mobile
-![Tasks Mobile](/assets/tasks-mobile.png)
+<img src="/assets/tasks-mobile.png" alt="Dashboard Mobile" height="400" />
 *Touch-optimized task management interface*
 
 ## 🔐 Security Features
