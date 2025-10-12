@@ -629,9 +629,8 @@ export default function TasksPage() {
 													<motion.div
 														className="flex gap-1"
 														initial={{ opacity: 0 }}
-														animate={{ opacity: 0 }}
-														whileHover={{ opacity: 1 }}
-														transition={{ duration: 0.2 }}
+														animate={{ opacity: 1 }}
+														transition={{ duration: 0.2, delay: index * 0.1 }}
 													>
 														<MotionButton
 															variant="ghost"

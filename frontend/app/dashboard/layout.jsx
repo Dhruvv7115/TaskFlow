@@ -13,7 +13,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import {Sheet, SheetContent, SheetHeader, SheetTitle, SheetTrigger} from '@/components/ui/sheet';
+import {Sheet, SheetClose, SheetContent, SheetHeader, SheetTitle, SheetTrigger} from '@/components/ui/sheet';
 import {MountedContainer} from "@/components/mounted-container";
 import {ModeToggle} from "@/components/theme-toggle";
 import Link from 'next/link';
@@ -21,7 +21,7 @@ import {
   IconBell,
   IconChecklist,
   IconChevronDown,
-  IconLayoutDashboard,
+  IconLayoutDashboard, IconLayoutSidebar, IconLayoutSidebarFilled,
   IconLogout,
   IconMenu2,
   IconSettings,
@@ -70,9 +70,9 @@ export default function DashboardLayout({children}) {
   };
 
   const SidebarContent = () => (
-    <div className="flex flex-col h-full bg-sidebar text-sidebar-foreground">
+    <div className="flex flex-col h-[calc(100vh-5rem)] justify-between bg-sidebar text-sidebar-foreground">
       {/* Navigation */}
-      <nav className="flex-1 px-4 py-6 space-y-1">
+      <nav>
         {navigation.map((item) => {
           const Icon = item.icon;
           const active = isActive(item.href);
@@ -82,23 +82,22 @@ export default function DashboardLayout({children}) {
               href={item.href}
               onClick={() => setSidebarOpen(false)}
             >
-              <Button
-                variant={active ? "secondary" : "ghost"}
-                className={`w-full justify-start ${
+              <div
+                className={`flex items-center p-3 rounded-lg w-full justify-start ${
                   active ? 'bg-sidebar-accent hover:bg-accent text-sidebar-accent-foreground' : 'hover:bg-accent hover:text-accent-foreground'
                 }`}
               >
-                <Icon className="mr-3 h-4 w-4"/>
+                <Icon className="mr-3 h-5 w-5"/>
                 {item.name}
-              </Button>
+              </div>
             </Link>
           );
         })}
       </nav>
 
       {/* Bottom section */}
-      <div className="p-4 border-t border-sidebar-border">
-        <div className="flex items-center gap-3 p-3 rounded-lg bg-sidebar-accent/50">
+      <div className="border-t border-sidebar-border p-3">
+        <div className="flex items-center gap-3 rounded-lg bg-sidebar-accent/50">
           <Avatar className="h-8 w-8">
             <AvatarFallback className="bg-sidebar-primary text-sidebar-primary-foreground text-xs border">
               {getInitials(user?.name)}
@@ -123,18 +122,22 @@ export default function DashboardLayout({children}) {
             {/* Mobile menu button */}
             <Sheet open={sidebarOpen} onOpenChange={setSidebarOpen}>
               <SheetTrigger asChild>
-                <Button
-                  variant="ghost"
-                  size="icon"
+                <div
                   className="lg:hidden"
                 >
-                  <IconMenu2 className="h-5 w-5"/>
+                  <IconLayoutSidebarFilled className="h-6 w-6"/>
                   <span className="sr-only">Toggle sidebar</span>
-                </Button>
+                </div>
               </SheetTrigger>
-              <SheetContent side="left" className="w-[280px] p-0 text-sidebar-foreground">
-                <SheetHeader className="sr-only">
-                  <SheetTitle>Navigation Menu</SheetTitle>
+              <SheetContent side="left" className="w-[280px] p-4 text-sidebar-foreground">
+                <SheetHeader className="flex flex-row justify-between mb-4">
+                  <SheetTitle className="text-xl flex items-center gap-2 font-semibold">
+                    <IconSparkles className="w-6 h-6 text-primary"/>
+                    <span className="text-xl font-semibold">TaskFlow</span>
+                  </SheetTitle>
+                  <SheetClose>
+                    <IconLayoutSidebar className="w-6 h-6"/>
+                  </SheetClose>
                 </SheetHeader>
                 <SidebarContent/>
               </SheetContent>
@@ -210,7 +213,7 @@ export default function DashboardLayout({children}) {
         <div className="flex">
           {/* Desktop Sidebar */}
           <aside
-            className="hidden lg:flex w-64 flex-col fixed left-0 top-16 bottom-0 border-r bg-sidebar text-sidebar-foreground shadow-lg">
+            className="hidden lg:flex w-64 flex-col fixed left-0 top-16 bottom-0 border-r bg-sidebar text-sidebar-foreground shadow-lg py-4 px-2">
             <SidebarContent/>
           </aside>
 
