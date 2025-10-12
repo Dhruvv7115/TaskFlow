@@ -586,7 +586,7 @@ export default function TasksPage() {
 							initial="hidden"
 							animate="visible"
 						>
-							{!loading && filteredTasks.map((task, index) => {
+							{!loading && filteredTasks.length > 0 && filteredTasks.map((task, index) => {
 								const StatusIcon = getStatusIcon(task.status);
 								return (
 									<motion.div
