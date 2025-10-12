@@ -367,7 +367,7 @@ export default function Home() {
               </motion.p>
 
               <motion.div
-                className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start"
+                className="flex flex-col sm:flex-row gap-4 justify-center"
                 variants={staggerItem}
               >
                 <Link href="/register">
