@@ -156,7 +156,6 @@ export const tapScale = {
 
 // Advanced card animations
 export const cardHover = {
-  y: -8,
   scale: 1.02,
   boxShadow: "0 20px 40px -15px rgba(0, 0, 0, 0.15)",
   transition: {

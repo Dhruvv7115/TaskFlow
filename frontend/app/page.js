@@ -3,9 +3,8 @@
 import {Suspense, useEffect, useRef, useState} from 'react';
 import {useRouter} from 'next/navigation';
 import {useAuth} from '@/context/AuthContext';
-import {Button} from '@/components/ui/button';
-import {Card, CardContent} from '@/components/ui/card';
-import {Badge} from '@/components/ui/badge';
+import {CardContent} from '@/components/ui/card';
+import {MotionButton, MotionCard, MotionBadge} from '@/components/ui/motion';
 import Link from 'next/link';
 import {ModeToggle} from '@/components/theme-toggle';
 import {motion, useInView, useMotionValue, useScroll, useSpring, useTransform} from 'motion/react';
@@ -35,9 +34,6 @@ import {
   textReveal
 } from '@/lib/animations';
 
-const MotionCard = motion(Card);
-const MotionButton = motion(Button);
-const MotionBadge = motion(Badge);
 
 // Magnetic button component
 const MagneticButton = ({children, ...props}) => {
@@ -331,8 +327,7 @@ export default function Home() {
               <motion.div variants={springIn}>
                 <MotionBadge
                   variant="secondary"
-                  className="mb-4 relative overflow-hidden"
-                  whileHover={{scale: 1.05}}
+                  className="mb-4 relative overflow-hidden hover:scale-[1.05]"
                 >
                   <motion.div
                     className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
@@ -385,7 +380,7 @@ export default function Home() {
                       className="absolute inset-0 bg-primary/20 rounded-lg blur-xl opacity-0 group-hover:opacity-100 transition-opacity"
                       animate={glow.animate}
                     />
-                    <Button size="lg" className="relative">
+                    <MotionButton size="lg" className="relative">
                       Start Free Trial
                       <motion.div
                         className="ml-2"
@@ -394,7 +389,7 @@ export default function Home() {
                       >
                         <IconArrowRight className="w-4 h-4"/>
                       </motion.div>
-                    </Button>
+                    </MotionButton>
                   </motion.div>
                 </Link>
                 <Link href="/login">
@@ -607,7 +602,7 @@ export default function Home() {
                       whileHover={{scale: 1.05}}
                       whileTap={{scale: 0.95}}
                     >
-                      <Button
+                      <MotionButton
                         size="lg"
                         variant="secondary"
                         className="group relative overflow-hidden"
@@ -628,7 +623,7 @@ export default function Home() {
                         >
                           <IconArrowRight className="w-4 h-4"/>
                         </motion.div>
-                      </Button>
+                      </MotionButton>
                     </motion.div>
                   </Link>
                 </CardContent>

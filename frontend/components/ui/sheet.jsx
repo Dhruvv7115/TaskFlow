@@ -1,10 +1,10 @@
 "use client";
 import * as React from "react"
 import * as SheetPrimitive from "@radix-ui/react-dialog"
-import {cva} from "class-variance-authority";
-import {IconX as X} from "@tabler/icons-react"
+import { cva } from "class-variance-authority";
+import { X } from "lucide-react"
 
-import {cn} from "@/lib/utils"
+import { cn } from "@/lib/utils"
 
 const Sheet = SheetPrimitive.Root
 
@@ -14,14 +14,14 @@ const SheetClose = SheetPrimitive.Close
 
 const SheetPortal = SheetPrimitive.Portal
 
-const SheetOverlay = React.forwardRef(({className, ...props}, ref) => (
+const SheetOverlay = React.forwardRef(({ className, ...props }, ref) => (
   <SheetPrimitive.Overlay
     className={cn(
       "fixed inset-0 z-50 bg-black/80  data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0",
       className
     )}
     {...props}
-    ref={ref}/>
+    ref={ref} />
 ))
 SheetOverlay.displayName = SheetPrimitive.Overlay.displayName
 
@@ -44,13 +44,13 @@ const sheetVariants = cva(
   }
 )
 
-const SheetContent = React.forwardRef(({side = "right", className, children, ...props}, ref) => (
+const SheetContent = React.forwardRef(({ side = "right", className, children, ...props }, ref) => (
   <SheetPortal>
-    <SheetOverlay/>
-    <SheetPrimitive.Content ref={ref} className={cn(sheetVariants({side}), className)} {...props}>
+    <SheetOverlay />
+    <SheetPrimitive.Content ref={ref} className={cn(sheetVariants({ side }), className)} {...props}>
       <SheetPrimitive.Close
-        className="absolute right-4 top-4 rounded-sm opacity-70 transition-opacity hover:opacity-100 hover:ring-2 hover:ring-ring focus:outline-none disabled:pointer-events-none data-[state=open]:bg-secondary mb-4">
-        <X className="h-4 w-4"/>
+        className="absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-secondary">
+        <X className="h-4 w-4" />
         <span className="sr-only">Close</span>
       </SheetPrimitive.Close>
       {children}
@@ -60,9 +60,9 @@ const SheetContent = React.forwardRef(({side = "right", className, children, ...
 SheetContent.displayName = SheetPrimitive.Content.displayName
 
 const SheetHeader = ({
-                       className,
-                       ...props
-                     }) => (
+  className,
+  ...props
+}) => (
   <div
     className={cn("flex flex-col space-y-2 text-center sm:text-left", className)}
     {...props} />
@@ -70,16 +70,16 @@ const SheetHeader = ({
 SheetHeader.displayName = "SheetHeader"
 
 const SheetFooter = ({
-                       className,
-                       ...props
-                     }) => (
+  className,
+  ...props
+}) => (
   <div
     className={cn("flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2", className)}
     {...props} />
 )
 SheetFooter.displayName = "SheetFooter"
 
-const SheetTitle = React.forwardRef(({className, ...props}, ref) => (
+const SheetTitle = React.forwardRef(({ className, ...props }, ref) => (
   <SheetPrimitive.Title
     ref={ref}
     className={cn("text-lg font-semibold text-foreground", className)}
@@ -87,7 +87,7 @@ const SheetTitle = React.forwardRef(({className, ...props}, ref) => (
 ))
 SheetTitle.displayName = SheetPrimitive.Title.displayName
 
-const SheetDescription = React.forwardRef(({className, ...props}, ref) => (
+const SheetDescription = React.forwardRef(({ className, ...props }, ref) => (
   <SheetPrimitive.Description
     ref={ref}
     className={cn("text-sm text-muted-foreground", className)}

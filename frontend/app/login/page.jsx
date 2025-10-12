@@ -3,10 +3,10 @@
 import {lazy, Suspense, useEffect, useState} from 'react';
 import {useRouter} from 'next/navigation';
 import {useAuth} from '@/context/AuthContext';
-import {Button} from '@/components/ui/button';
 import {Input} from '@/components/ui/input';
 import {Label} from '@/components/ui/label';
-import {Card, CardContent, CardFooter} from '@/components/ui/card';
+import {CardContent, CardFooter} from '@/components/ui/card';
+import {MotionButton, MotionCard} from '@/components/ui/motion';
 import {Alert, AlertDescription} from '@/components/ui/alert';
 import {Checkbox} from '@/components/ui/checkbox';
 import Link from 'next/link';
@@ -25,8 +25,6 @@ import {buttonHover, buttonTap, fadeInUp, scaleIn} from '@/lib/animations';
 import {Spinner} from "@/components/ui/spinner";
 
 const LoginSkeleton = lazy(() => import('@/components/login-skeleton'));
-const MotionCard = motion.create(Card);
-const MotionButton = motion.create(Button);
 
 export default function LoginPage() {
   const [formData, setFormData] = useState({
