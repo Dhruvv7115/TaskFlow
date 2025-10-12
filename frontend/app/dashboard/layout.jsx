@@ -70,9 +70,9 @@ export default function DashboardLayout({children}) {
   };
 
   const SidebarContent = () => (
-    <div className="flex flex-col h-[calc(100vh-5rem)] justify-between bg-sidebar text-sidebar-foreground">
+    <div className="flex flex-col h-full justify-between bg-sidebar text-sidebar-foreground">
       {/* Navigation */}
-      <nav>
+      <nav className="flex-1 overflow-y-auto">
         {navigation.map((item) => {
           const Icon = item.icon;
           const active = isActive(item.href);
@@ -96,7 +96,7 @@ export default function DashboardLayout({children}) {
       </nav>
 
       {/* Bottom section */}
-      <div className="border-t border-sidebar-border p-3">
+      <div className="border-t border-sidebar-border p-3 flex-shrink-0">
         <div className="flex items-center gap-3 rounded-lg bg-sidebar-accent/50">
           <Avatar className="h-8 w-8">
             <AvatarFallback className="bg-sidebar-primary text-sidebar-primary-foreground text-xs border">
@@ -129,8 +129,8 @@ export default function DashboardLayout({children}) {
                   <span className="sr-only">Toggle sidebar</span>
                 </div>
               </SheetTrigger>
-              <SheetContent side="left" className="w-[280px] p-4 text-sidebar-foreground">
-                <SheetHeader className="flex flex-row justify-between mb-4">
+              <SheetContent side="left" className="w-[280px] p-4 text-sidebar-foreground flex flex-col">
+                <SheetHeader className="flex flex-row justify-between mb-4 flex-shrink-0">
                   <SheetTitle className="text-xl flex items-center gap-2 font-semibold">
                     <IconSparkles className="w-6 h-6 text-primary"/>
                     <span className="text-xl font-semibold">TaskFlow</span>
@@ -139,7 +139,9 @@ export default function DashboardLayout({children}) {
                     <IconLayoutSidebar className="w-6 h-6"/>
                   </SheetClose>
                 </SheetHeader>
-                <SidebarContent/>
+                <div className="flex-1 min-h-0">
+                  <SidebarContent/>
+                </div>
               </SheetContent>
             </Sheet>
 
