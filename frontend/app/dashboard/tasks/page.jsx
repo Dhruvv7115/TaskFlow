@@ -66,7 +66,9 @@ import {
 	staggerItem,
 } from "@/lib/animations";
 
-const TasksSkeleton = lazy(() => import("@/components/tasks-skeleton.jsx"));
+const TasksSkeleton = lazy(() =>
+  import("@/components/tasks-skeleton.jsx").then((m) => ({ default: m.TasksSkeleton }))
+);
 
 export default function TasksPage() {
 	const [tasks, setTasks] = useState([]);
@@ -94,7 +96,8 @@ export default function TasksPage() {
 		try {
 			setLoading(true);
 			const response = await tasksAPI.getTasks();
-			setTasks(response.data || []);
+			// tasksAPI.getTasks() returns the server JSON: { success, count, data: [...] }
+			setTasks(response?.data || []);
 		} catch (error) {
 			console.error("Error fetching tasks:", error);
 		} finally {
@@ -520,7 +523,11 @@ export default function TasksPage() {
 
 				{/* Tasks Grid/List */}
 				<AnimatePresence mode="wait">
-					{!loading && filteredTasks.length === 0 ? (
+					{!loading && (
+					(activeFiltersCount > 0
+						? filteredTasks.length === 0
+						: tasks.length === 0)
+				) ? (
 						<motion.div
 							key="empty"
 							initial={{ opacity: 0, scale: 0.9 }}
