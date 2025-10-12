@@ -301,7 +301,7 @@ export default function Home() {
               </motion.div>
               <div className="flex items-center gap-4">
                 <ModeToggle/>
-                <Link href="/login">
+                <Link href="/login" className="hidden sm:block">
                   <MagneticButton variant="ghost">
                     Login
                   </MagneticButton>
@@ -367,7 +367,7 @@ export default function Home() {
               </motion.p>
 
               <motion.div
-                className="flex flex-col sm:flex-row gap-4 justify-center"
+                className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start"
                 variants={staggerItem}
               >
                 <Link href="/register">
@@ -660,7 +660,7 @@ export default function Home() {
                 animate={{opacity: 1}}
                 transition={{delay: 0.2}}
               >
-                © 2024 TaskFlow. Built for the internship assignment.
+                © 2024 TaskFlow. Build with ❤️ by Dhruv
               </motion.p>
             </div>
           </div>

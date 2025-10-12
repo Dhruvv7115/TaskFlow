@@ -22,7 +22,7 @@ A modern, responsive task management application built with Next.js 15, Express.
 ## 📁 Project Structure
 
 ```
-internship-app/
+TaskFlow/
 ├── backend/          # Express API with MongoDB
 │   ├── models/       # User & Task schemas
 │   ├── routes/       # API endpoints

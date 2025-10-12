@@ -1,7 +1,7 @@
 {
-  "name": "internship-backend",
+  "name": "taskflow-backend",
   "version": "1.0.0",
-  "description": "Backend API for Internship Assignment",
+  "description": "TaskFlow API with MongoDB",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",

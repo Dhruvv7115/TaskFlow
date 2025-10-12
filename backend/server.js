@@ -37,7 +37,7 @@ app.use((err, req, res, next) => {
 // MongoDB Connection
 mongoose
 	.connect(
-		process.env.MONGODB_URI || "mongodb://localhost:27017/internship-app",
+		process.env.MONGODB_URI || "mongodb://localhost:27017/taskflow",
 		{
 			useNewUrlParser: true,
 			useUnifiedTopology: true,

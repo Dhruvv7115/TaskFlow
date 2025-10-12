@@ -7,7 +7,7 @@ import { ThemeProvider } from "@/components/theme-provider"
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata = {
-    title: 'Task Manager - Internship Assignment',
+    title: 'TaskFlow - A Task Management Application',
     description: 'A full-stack task management application with authentication',
 };
 
